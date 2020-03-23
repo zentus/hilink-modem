@@ -1,8 +1,35 @@
 const Modem = require('./lib')
 
-const modem = new Modem()
+const modem = new Modem({
+	// modemIp: '192.168.8.1',
+	// messageDelay: 1,
+	// bigMessageDelay: 30,
+	// sendMessageStatusDelay: 1,
+	// waitForPendingRequest: true
+})
 
-const pingPong = async message => {
+// Send SMS message
+modem.sendMessage({
+	receiver: '+46736000000',
+	text: 'hello world'
+}).then(status => console.log(status))
+
+// Get SMS Inbox
+modem.getInbox({
+	page: 1,
+	count: 1,
+	sort: 'ascending'
+}).then(messages => console.log(messages))
+
+// Get SMS Outbox
+modem.getOutbox({
+	// count: 20
+	// page: 1
+	// sort: 'descending'
+}).then(messages => console.log(messages))
+
+// Listen for new SMS messages
+modem.onMessage(async message => {
 	console.log('recieved message:', message)
 
 	const pingOrPong = (
@@ -16,19 +43,4 @@ const pingPong = async message => {
 	})
 
 	console.log('sent message:', status)
-}
-
-// Listen for new SMS messages
-modem.onMessage(pingPong)
-
-// Get Inbox
-modem.getInbox()
-	.then(inbox => console.log(inbox))
-
-// Get Outbox
-modem.getOutbox()
-	.then(outbox => console.log(outbox))
-
-// Send SMS message
-modem.sendMessage({ receiver: '+46736000000', text: 'hello world' })
-	.then(status => console.log(status))
+})
