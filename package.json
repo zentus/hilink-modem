@@ -1,0 +1,17 @@
+{
+  "name": "@zentus/modem",
+  "version": "0.0.0",
+  "description": "Node.js connector for Huawei 3G Modem Web API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zenus",
+  "license": "MIT",
+  "dependencies": {
+    "fast-xml-parser": "3.16.0",
+    "got": "10.6.0",
+    "jsdom": "16.2.1",
+    "yargs-parser": "18.1.1"
+  }
+}
