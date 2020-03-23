@@ -1,7 +1,7 @@
 {
   "name": "@zentus/modem",
   "version": "0.0.0",
-  "description": "Node.js connector for Huawei 3G Modem Web API",
+  "description": "A Node.js wrapper around Huawei's 3G Modem Web API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

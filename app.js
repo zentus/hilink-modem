@@ -2,11 +2,13 @@ const Modem = require('./lib')
 
 const modem = new Modem()
 
-modem.onMessage(async message => {
-	console.log('got message', message)
+const pingPong = () => modem.onMessage(async message => {
+	console.log('recieved message:', message)
 
-	// await modem.sendMessage({
-	// 	receiver: '0' + String(message.Phone).slice(2),
-	// 	text: message.Content
-	// }).then(console.log)
+	await modem.sendMessage({
+		receiver: message.sender,
+		text: message.text === 'ping' ? 'pong' : 'no ping pong?'
+	}).then(status => console.log('sent message:', status))
 })
+
+pingPong()
