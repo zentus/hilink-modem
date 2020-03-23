@@ -12,6 +12,7 @@
     "fast-xml-parser": "3.16.0",
     "got": "10.6.0",
     "jsdom": "16.2.1",
+    "p-series": "^2.1.0",
     "yargs-parser": "18.1.1"
   }
 }
