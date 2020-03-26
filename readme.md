@@ -4,7 +4,6 @@ A node.js wrapper around the Huawei HiLink REST API
 
 ## Setup
 
-
 ```bash
 npm install @zentus/modem
 ```
@@ -42,6 +41,7 @@ Type: `object`
 | **sendMessageStatusDelay** | 1             | number  | *The number of seconds to wait between checking status of message sent with Modem.sendMessage*                                                                                                       |
 | **waitForPendingRequest**  | true          | boolean | *If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending*                                       |
 
+
 #### Modem.sendMessage(options)
 
 ```javascript
@@ -73,18 +73,18 @@ The text of the message
 #### Modem.getInbox(options)
 #### Modem.getOutbox(options)
 
-Get messages in the Inbox/Outbox
+Get messages from the Inbox or Outbox (sent messages)
 
 ```javascript
 modem.getInbox({
-	count: 1
-  page: 1
+  count: 1,
+  page: 1,
   sort: 'ascending'
 }).then(messages => console.log(messages))
 
 modem.getOutbox({
-	count: 1
-  page: 1
+  count: 1,
+  page: 1,
   sort: 'ascending'
 }).then(messages => console.log(messages))
 ```
@@ -97,28 +97,28 @@ Type: `object`
 
 ###### count
 
-Type: `number`
+Type: `number`  
 Default: `20`
 
 The number messages to get (maximum 20)
 
 ###### page
 
-Type: `number`
+Type: `number`  
 Default: `1`
 
 The page number of the messages to get
 
 ###### sort
 
-Type: `string`
-Default: `ascending`
+Type: `string`  
+Default: `ascending`  
 Possible values: `ascending|descending`
 
 
 #### Modem.onMessage(callback)
 
-Get messages in the Inbox/Outbox
+Listen for new messages
 
 ```javascript
 modem.onMessage(message => {
@@ -130,12 +130,12 @@ modem.onMessage(message => {
 
 Type: `function`
 
-A callback function that will be called when a new message is received. Async functions are supported.
+A callback function that will be called when a new message is received. Async functions are supported
 
 
 #### Modem.apiRequest(endpoint, options)
 
-Get messages in the Inbox/Outbox
+Make a request to the HiLink API, with tokens provided
 
 ```javascript
 modem.apiRequest('/sms/sms-count').then(console.log)
@@ -155,8 +155,8 @@ Type: `object`
 
 ###### method
 
-Type: `string`
-Default: `get`
+Type: `string`  
+Default: `get`  
 Possible values: `get|post|put|patch|head|delete`
 
 The request method
