@@ -102,6 +102,8 @@ Type: `object`
 
 #### Modem.onMessage(callback)
 
+Type: `function`
+
 Start listening for new messages
 
 ```javascript
@@ -118,6 +120,10 @@ A callback function that will be called when a new message is received. Async fu
 
 
 #### Modem.apiRequest(endpoint, options)
+
+Type: `function`
+
+Returns a `Promise`
 
 Make a request to the HiLink API, with tokens provided
 
