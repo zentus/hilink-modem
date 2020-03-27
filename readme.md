@@ -141,21 +141,9 @@ The endpoint to request. Will be prepended with `/api`
 
 Type: `object`
 
-###### method
-
-Type: `string`  
-Default: `get`  
-Possible values: `get | post | put | patch | head | delete`
-
-The request method
-
-###### body
-
-Type: `object`
-
 | Option | Default     | Type     | Allowed values                                       | Description              |
 |--------|-------------|----------|------------------------------------------------------|--------------------------|
-| method | `get`       | `string` | `get` | `post` | `put` | `patch` | `head` | `delete` | The request method       |
+| method | `get`       | `string` | `get` \| `post` \| `put` \| `patch` \| `head` \| `delete` | The request method       |
 | body   | `undefined` | `object` |                                                      | The request body in JSON |
 
 The API accepts only accepts XML. `body` will be converted to XML, see example below.
@@ -176,7 +164,7 @@ const body = {
 To this:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <request>
    <Ascending>1</Ascending>
    <BoxType>1</BoxType>
