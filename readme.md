@@ -53,11 +53,9 @@ modem.sendMessage({
 }).then(status => console.log(status))
 ```
 
-#### options
+##### options
 
 Type: `object`
-
-##### Properties
 
 ###### receiver
 
@@ -91,11 +89,9 @@ modem.getOutbox({
 }).then(messages => console.log(messages))
 ```
 
-#### options
+##### options
 
 Type: `object`
-
-##### Properties
 
 ###### count
 
@@ -128,7 +124,7 @@ modem.onMessage(message => {
 })
 ```
 
-#### callback
+##### callback
 
 Type: `function`
 
@@ -143,17 +139,15 @@ Make a request to the HiLink API, with tokens provided
 modem.apiRequest('/sms/sms-count').then(console.log)
 ```
 
-#### endpoint
+##### endpoint
 
 Type: `string`
 
 The endpoint to request. Will be prepended with `/api`
 
-#### options
+##### options
 
 Type: `object`
-
-##### Properties
 
 ###### method
 
