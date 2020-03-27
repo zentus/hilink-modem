@@ -27,7 +27,7 @@ modem.sendMessage({
 
 Type: `function`
 
-Returns an instance of Modem
+Returns an instance of **Modem**
 
 ##### options
 
@@ -35,14 +35,18 @@ Type: `object`
 
 | Option                     | Default | Type    | Description                                                                                                                                                                                          |
 |----------------------------|---------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **modemIp**                | `192.168.8.1`   | `string`  | The IP address of the modem                                                                                                                                                                   |
-| **messageDelay**           | `1`             | `number`  | The number of seconds to wait between looking for new messages in Modem.onMessage                                                                                                                  |
-| **bigMessageDelay**        | `30`            | `number`  | The number of seconds to wait before looking for a new message after first receiving a multi-part SMS (The HiLink API initially returns scrambled messages after first receiving a multi-part SMS) |
-| **sendMessageStatusDelay** | `1`             | `number`  | The number of seconds to wait between checking status of message sent with Modem.sendMessage                                                                                                       |
-| **waitForPendingRequest**  | `true`          | `boolean` | If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending                                       |
+| modemIp                | `192.168.8.1`   | `string`  | The IP address of the modem                                                                                                                                                                   |
+| messageDelay           | `1`             | `number`  | The number of seconds to wait between looking for new messages in Modem.onMessage                                                                                                                  |
+| bigMessageDelay        | `30`            | `number`  | The number of seconds to wait before looking for a new message after first receiving a multi-part SMS (The HiLink API initially returns scrambled messages after first receiving a multi-part SMS) |
+| sendMessageStatusDelay | `1`             | `number`  | The number of seconds to wait between checking status of message sent with Modem.sendMessage                                                                                                       |
+| waitForPendingRequest  | `true`          | `boolean` | If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending                                       |
 
 
 #### Modem.sendMessage(options)
+
+Type: `function`
+
+Returns a `Promise`
 
 Send an SMS text message
 
@@ -57,21 +61,17 @@ modem.sendMessage({
 
 Type: `object`
 
-###### receiver
-
-Type: `string`
-
-The telephone number of the receiver
-
-###### text
-
-Type: `string`
-
-The text of the message
+| Option   | Type     | Description                          |
+|----------|----------|--------------------------------------|
+| receiver | `string` | The telephone number of the receiver |
+| text     | `string` | The text of the message              |
 
 
-#### Modem.getInbox(options)
-#### Modem.getOutbox(options)
+#### Modem.getInbox(options) | Modem.getOutbox(options)
+
+Type: `function`
+
+Returns a `Promise`
 
 Get messages from the Inbox or Outbox
 
@@ -93,25 +93,11 @@ modem.getOutbox({
 
 Type: `object`
 
-###### count
-
-Type: `number`  
-Default: `20`
-
-The number of messages to get (maximum 20)
-
-###### page
-
-Type: `number`  
-Default: `1`
-
-The messages page number
-
-###### sort
-
-Type: `string`  
-Default: `ascending`  
-Possible values: `ascending | descending`
+| Option | Default     | Type     | Allowed values             | Description                   |
+|--------|-------------|----------|-----------------------------|-------------------------------|
+| count  | `20`        | `number` | `1` to `20`                 | The number of messages to get |
+| page   | `1`         | `number` | `1` to `{pageCount}`        | The page to get messages from |
+| sort   | `ascending` | `string` | `ascending` \| `descending` | The sort direction            |
 
 
 #### Modem.onMessage(callback)
@@ -161,18 +147,23 @@ The request method
 
 Type: `object`
 
-The request body in JSON. The API accepts only accepts XML. This object `body` will be converted to XML.
+| Option | Default     | Type     | Allowed values                                       | Description              |
+|--------|-------------|----------|------------------------------------------------------|--------------------------|
+| method | `get`       | `string` | `get` | `post` | `put` | `patch` | `head` | `delete` | The request method       |
+| body   | `undefined` | `object` |                                                      | The request body in JSON |
+
+The API accepts only accepts XML. `body` will be converted to XML, see example below.
 
 From this:
 
-```json
-{
-  "PageIndex": 1,
-  "ReadCount": 20,
-  "BoxType": 1,
-  "SortType": 0,
-  "Ascending": 1,
-  "UnreadPreferred": 1
+```javascript
+const body = {
+  Ascending: 1,
+  BoxType: 1,
+  PageIndex: 1,
+  ReadCount: 20,
+  SortType: 0,
+  UnreadPreferred: 1
 }
 ```
 
