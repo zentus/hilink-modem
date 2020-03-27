@@ -35,14 +35,16 @@ Type: `object`
 
 | Option                     | Default | Type    | Description                                                                                                                                                                                          |
 |----------------------------|---------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **modemIp**                | 192.168.8.1   | string  | *The IP address of the modem*                                                                                                                                                                   |
-| **messageDelay**           | 1             | number  | *The number of seconds to wait between looking for new messages in Modem.onMessage*                                                                                                                  |
-| **bigMessageDelay**        | 30            | number  | *The number of seconds to wait before looking for a new message after first receiving a multi-part SMS (The HiLink API initially returns scrambled messages after first receiving a multi-part SMS)* |
-| **sendMessageStatusDelay** | 1             | number  | *The number of seconds to wait between checking status of message sent with Modem.sendMessage*                                                                                                       |
-| **waitForPendingRequest**  | true          | boolean | *If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending*                                       |
+| **modemIp**                | `192.168.8.1`   | `string`  | The IP address of the modem                                                                                                                                                                   |
+| **messageDelay**           | `1`             | `number`  | The number of seconds to wait between looking for new messages in Modem.onMessage                                                                                                                  |
+| **bigMessageDelay**        | `30`            | `number`  | The number of seconds to wait before looking for a new message after first receiving a multi-part SMS (The HiLink API initially returns scrambled messages after first receiving a multi-part SMS) |
+| **sendMessageStatusDelay** | `1`             | `number`  | The number of seconds to wait between checking status of message sent with Modem.sendMessage                                                                                                       |
+| **waitForPendingRequest**  | `true`          | `boolean` | If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending                                       |
 
 
 #### Modem.sendMessage(options)
+
+Send an SMS text message
 
 ```javascript
 modem.sendMessage({
@@ -73,7 +75,7 @@ The text of the message
 #### Modem.getInbox(options)
 #### Modem.getOutbox(options)
 
-Get messages from the Inbox or Outbox (sent messages)
+Get messages from the Inbox or Outbox
 
 ```javascript
 modem.getInbox({
@@ -100,25 +102,25 @@ Type: `object`
 Type: `number`  
 Default: `20`
 
-The number messages to get (maximum 20)
+The number of messages to get (maximum 20)
 
 ###### page
 
 Type: `number`  
 Default: `1`
 
-The page number of the messages to get
+The messages page number
 
 ###### sort
 
 Type: `string`  
 Default: `ascending`  
-Possible values: `ascending|descending`
+Possible values: `ascending | descending`
 
 
 #### Modem.onMessage(callback)
 
-Listen for new messages
+Start listening for new messages
 
 ```javascript
 modem.onMessage(message => {
@@ -157,7 +159,7 @@ Type: `object`
 
 Type: `string`  
 Default: `get`  
-Possible values: `get|post|put|patch|head|delete`
+Possible values: `get | post | put | patch | head | delete`
 
 The request method
 
@@ -165,7 +167,22 @@ The request method
 
 Type: `object`
 
-The request body in JSON. The API accepts only accepts XML. This object will be converted to XML that looks something like this:
+The request body in JSON. The API accepts only accepts XML. This object `body` will be converted to XML.
+
+From this:
+
+```json
+{
+  "PageIndex": 1,
+  "ReadCount": 20,
+  "BoxType": 1,
+  "SortType": 0,
+  "Ascending": 1,
+  "UnreadPreferred": 1
+}
+```
+
+To this:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -177,6 +194,5 @@ The request body in JSON. The API accepts only accepts XML. This object will be 
    <SortType>0</SortType>
    <UnreadPreferred>1</UnreadPreferred>
 </request>
-````
-
+```
 
