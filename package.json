@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "description": "A Node.js wrapper around Huawei's 3G Modem Web API",
   "main": "lib/index.js",
-  "scripts": {},
+  "scripts": {
+		"lint": "standard",
+		"lint:fix": "standard --fix",
+		"test": "npm run lint"
+	},
   "engines": {
     "node": ">=10"
   },
