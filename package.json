@@ -1,6 +1,6 @@
 {
 	"name": "hilink-modem",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "A Node.js wrapper around Huawei's 3G Modem Web API",
 	"scripts": {
 		"lint": "standard",
