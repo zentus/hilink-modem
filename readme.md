@@ -27,7 +27,7 @@ modem.sendMessage({
 
 Type: `function`
 
-Returns an instance of **Modem**
+Returns an instance of `Modem`
 
 ##### options
 
@@ -67,26 +67,23 @@ Type: `object`
 | text     | `string` | The text of the message              |
 
 
-#### Modem.getInbox(options) | Modem.getOutbox(options)
+#### Modem.getMessages(options)
 
 Type: `function`
 
 Returns a `Promise`
 
-Get messages from the Inbox or Outbox
+Get SMS text messages
 
 ```javascript
-modem.getInbox({
-  count: 1,
-  page: 1,
-  sort: 'ascending'
-}).then(messages => console.log(messages))
+modem.getMessages({type: 'received'})
+	.then(messages => console.log(messages))
 
-modem.getOutbox({
-  count: 1,
-  page: 1,
-  sort: 'ascending'
-}).then(messages => console.log(messages))
+modem.getMessages({type: 'sent'})
+	.then(messages => console.log(messages))
+
+modem.getMessages({type: 'drafted'})
+	.then(messages => console.log(messages))
 ```
 
 ##### options
@@ -95,16 +92,17 @@ Type: `object`
 
 | Option | Default     | Type     | Allowed values             | Description                   |
 |--------|-------------|----------|-----------------------------|-------------------------------|
+| type   | `received`  | `string` |`received`\|`sent`\|`drafted`| The mailbox to get messages from |
 | count  | `20`        | `number` | `1` to `20`                 | The number of messages to get |
 | page   | `1`         | `number` | `1` to `{pageCount}`        | The page to get messages from |
-| sort   | `ascending` | `string` | `ascending` \| `descending` | The sort direction            |
+| sort   | `ascending` | `string` | `ascending`\|`descending`   | The sort direction            |
 
 
 #### Modem.onMessage(callback)
 
 Type: `function`
 
-Start listening for new messages
+Start listening for incoming SMS text messages
 
 ```javascript
 modem.onMessage(message => {
@@ -125,7 +123,9 @@ Type: `function`
 
 Returns a `Promise`
 
-Make a request to the HiLink API, with tokens provided
+Make a custom request to the HiLink API, with tokens provided.
+
+If you use this to write a method not covered by this package, feel free to make a PR!
 
 ```javascript
 modem.apiRequest('/sms/sms-count').then(console.log)
@@ -143,10 +143,10 @@ Type: `object`
 
 | Option | Default     | Type     | Allowed values                                       | Description              |
 |--------|-------------|----------|------------------------------------------------------|--------------------------|
-| method | `get`       | `string` | `get` \| `post` \| `put` \| `patch` \| `head` \| `delete` | The request method       |
+| method | `GET`       | `string` | `GET`\|`POST`\|`PUT`\|`PATCH`\|`HEAD`\|`DELETE`      | The request method       |
 | body   | `undefined` | `object` |                                                      | The request body in JSON |
 
-The API accepts only accepts XML. `body` will be converted to XML, see example below.
+The HiLink API only accepts XML. `body` will be converted to XML, see example below.
 
 From this:
 
@@ -175,3 +175,10 @@ To this:
 </request>
 ```
 
+## Devices
+
+See https://github.com/zentus/modem/issues/1
+
+## License
+
+[MIT](https://github.com/zentus/modem/blob/master/LICENSE)

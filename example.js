@@ -14,17 +14,27 @@ modem.sendMessage({
   // text: 'Hello world!'
 }).then(status => console.log(status))
 
-// Get SMS Inbox
-modem.getInbox({
-  // count: 20
-  // page: 1
+// Get received SMS messages
+modem.getMessages({
+  type: 'received'
+  // count: 20,
+  // page: 1,
   // sort: 'descending'
 }).then(messages => console.log(messages))
 
-// Get SMS Outbox
-modem.getOutbox({
-  // count: 20
-  // page: 1
+// Get sent SMS messages
+modem.getMessages({
+  type: 'sent'
+  // count: 20,
+  // page: 1,
+  // sort: 'descending'
+}).then(messages => console.log(messages))
+
+// Get drafted SMS messages
+modem.getMessages({
+  type: 'drafted'
+  // count: 20,
+  // page: 1,
   // sort: 'descending'
 }).then(messages => console.log(messages))
 
@@ -47,6 +57,6 @@ modem.onMessage(async message => {
 
 // Make a custom Hilink API request with tokens provided
 modem.apiRequest('/status', {
-  // method: 'get',
-  // body: undefined
+  // method: 'POST',
+  // body: {}
 }).then(console.log)
