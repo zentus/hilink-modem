@@ -1,17 +1,17 @@
-# @zentus/modem
+# hilink-modem
 
 A node.js wrapper around the Huawei HiLink REST API
 
 ## Setup
 
 ```bash
-npm install @zentus/modem
+npm install hilink-modem
 ```
 
 ## Usage
 
 ```javascript
-const Modem = require('@zentus/modem')
+const Modem = require('hilink-modem')
 
 const modem = new Modem()
 
@@ -177,8 +177,8 @@ To this:
 
 ## Devices
 
-See https://github.com/zentus/modem/issues/1
+See https://github.com/zentus/hilink-modem/issues/1
 
 ## License
 
-[MIT](https://github.com/zentus/modem/blob/master/LICENSE)
+[MIT](https://github.com/zentus/hilink-modem/blob/master/LICENSE)

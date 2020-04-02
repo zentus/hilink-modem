@@ -1,22 +1,29 @@
 {
-  "name": "@zentus/modem",
-  "version": "0.0.0",
-  "description": "A Node.js wrapper around Huawei's 3G Modem Web API",
-  "main": "lib/index.js",
-  "scripts": {
+	"name": "hilink-modem",
+	"version": "0.0.0",
+	"description": "A Node.js wrapper around Huawei's 3G Modem Web API",
+	"scripts": {
 		"lint": "standard",
 		"lint:fix": "standard --fix",
 		"test": "npm run lint"
 	},
-  "engines": {
-    "node": ">=10"
-  },
-  "author": "zenus",
-  "license": "MIT",
-  "dependencies": {
-    "fast-xml-parser": "3.16.0",
-    "got": "10.6.0",
-    "jsdom": "16.2.1",
-    "p-series": "2.1.0"
-  }
+	"dependencies": {
+		"fast-xml-parser": "3.16.0",
+		"got": "10.6.0",
+		"jsdom": "16.2.1",
+		"p-series": "2.1.0"
+	},
+	"engines": {
+		"node": ">=10"
+	},
+	"main": "lib/index.js",
+	"files": [
+		"lib/index.js",
+		"lib/utils.js",
+		"LICENSE",
+		"readme.md"
+	],
+	"repository": "github:zentus/hilink-modem",
+	"author": "zentus",
+	"license": "MIT"
 }
