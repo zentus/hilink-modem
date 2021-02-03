@@ -40,6 +40,7 @@ Type: `object`
 | bigMessageDelay        | `30`            | `number`  | The number of seconds to wait before looking for a new message after first receiving a multi-part SMS (The HiLink API initially returns scrambled messages after first receiving a multi-part SMS) |
 | sendMessageStatusDelay | `1`             | `number`  | The number of seconds to wait between checking status of message sent with Modem.sendMessage                                                                                                       |
 | waitForPendingRequest  | `true`          | `boolean` | If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending                                       |
+| webUiVersion  | undefined          | `string` | Set the version of the Hilink WebUI. If undefined the modem will try to detect the version automatically                                      |
 
 
 #### Modem.sendMessage(options)
