@@ -21,6 +21,7 @@
 		"lib/index.js",
 		"lib/utils.js",
 		"lib/versions.js",
+		"lib/index.d.ts",
 		"LICENSE",
 		"readme.md"
 	],
