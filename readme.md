@@ -177,7 +177,7 @@ To this:
 
 ## Devices
 
-See https://github.com/zentus/hilink-modem/issues/1
+See https://github.com/zentus/hilink-modem/blob/master/devices.md
 
 ## License
 
