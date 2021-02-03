@@ -42,7 +42,6 @@ Type: `object`
 | waitForPendingRequest  | `true`          | `boolean` | If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending                                       |
 | webUiVersion  | undefined          | `string` | Set the version of the Hilink WebUI. If undefined the modem will try to detect the version automatically                                      |
 
-
 #### Modem.sendMessage(options)
 
 Type: `function`
@@ -116,6 +115,59 @@ modem.onMessage(message => {
 Type: `function`
 
 A callback function that will be called when a new message is received. Async functions are supported
+
+
+#### Modem.connect()
+
+Type: `function`
+
+Returns a `Promise`
+
+Connects the mobile data
+
+```javascript
+modem.connect()
+	.then(message => console.log(message))
+```
+
+#### Modem.disconnect()
+
+Type: `function`
+
+Returns a `Promise`
+
+Disconnects the mobile data
+
+```javascript
+modem.disconnect()
+	.then(message => console.log(message))
+```
+
+#### Modem.trafficStatistics()
+
+Type: `function`
+
+Returns a `Promise`
+
+Returns information about the traffic of the mobile data usage. Information contains statistics like Up/Download rate, time connected or total up/dowloads.
+
+```javascript
+modem.trafficStatistics()
+	.then(statistics => console.log(statistics))
+```
+
+#### Modem.status()
+
+Type: `function`
+
+Returns a `Promise`
+
+Returns information about the status of the modem. The data contains parameters about connection and signal strength.
+
+```javascript
+modem.status()
+	.then(status => console.log(status))
+```
 
 
 #### Modem.apiRequest(endpoint, options)
