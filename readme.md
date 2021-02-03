@@ -16,7 +16,7 @@ const Modem = require('hilink-modem')
 const modem = new Modem()
 
 modem.sendMessage({
-  reciever: '+46123456789',
+  receiver: '+46123456789',
   text: 'Hello from node world!'
 }).then(status => console.log(status))
 ```
@@ -40,7 +40,7 @@ Type: `object`
 | bigMessageDelay        | `30`            | `number`  | The number of seconds to wait before looking for a new message after first receiving a multi-part SMS (The HiLink API initially returns scrambled messages after first receiving a multi-part SMS) |
 | sendMessageStatusDelay | `1`             | `number`  | The number of seconds to wait between checking status of message sent with Modem.sendMessage                                                                                                       |
 | waitForPendingRequest  | `true`          | `boolean` | If a new request is started while there is a pending request to the API, the new request will not be executed until the pending request is no longer pending                                       |
-
+| webUiVersion  | undefined          | `string` | Set the version of the Hilink WebUI. If undefined the modem will try to detect the version automatically                                      |
 
 #### Modem.sendMessage(options)
 
@@ -52,7 +52,7 @@ Send an SMS text message
 
 ```javascript
 modem.sendMessage({
-  reciever: '+46123456789',
+  receiver: '+46123456789',
   text: 'Hello from node world!'
 }).then(status => console.log(status))
 ```
@@ -117,6 +117,59 @@ Type: `function`
 A callback function that will be called when a new message is received. Async functions are supported
 
 
+#### Modem.connect()
+
+Type: `function`
+
+Returns a `Promise`
+
+Connects the mobile data
+
+```javascript
+modem.connect()
+	.then(message => console.log(message))
+```
+
+#### Modem.disconnect()
+
+Type: `function`
+
+Returns a `Promise`
+
+Disconnects the mobile data
+
+```javascript
+modem.disconnect()
+	.then(message => console.log(message))
+```
+
+#### Modem.trafficStatistics()
+
+Type: `function`
+
+Returns a `Promise`
+
+Returns information about the traffic of the mobile data usage. Information contains statistics like Up/Download rate, time connected or total up/dowloads.
+
+```javascript
+modem.trafficStatistics()
+	.then(statistics => console.log(statistics))
+```
+
+#### Modem.status()
+
+Type: `function`
+
+Returns a `Promise`
+
+Returns information about the status of the modem. The data contains parameters about connection and signal strength.
+
+```javascript
+modem.status()
+	.then(status => console.log(status))
+```
+
+
 #### Modem.apiRequest(endpoint, options)
 
 Type: `function`
@@ -177,7 +230,7 @@ To this:
 
 ## Devices
 
-See https://github.com/zentus/hilink-modem/issues/1
+See https://github.com/zentus/hilink-modem/blob/master/devices.md
 
 ## License
 
