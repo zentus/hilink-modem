@@ -20,6 +20,7 @@
 	"files": [
 		"lib/index.js",
 		"lib/utils.js",
+		"lib/versions.js",
 		"LICENSE",
 		"readme.md"
 	],
