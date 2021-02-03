@@ -10,7 +10,7 @@
 	"dependencies": {
 		"fast-xml-parser": "3.16.0",
 		"got": "10.6.0",
-		"jsdom": "16.2.1",
+		"jsdom": "16.4.0",
 		"p-series": "2.1.0"
 	},
 	"engines": {
