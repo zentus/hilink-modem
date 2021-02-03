@@ -16,7 +16,7 @@ const Modem = require('hilink-modem')
 const modem = new Modem()
 
 modem.sendMessage({
-  reciever: '+46123456789',
+  receiver: '+46123456789',
   text: 'Hello from node world!'
 }).then(status => console.log(status))
 ```
@@ -52,7 +52,7 @@ Send an SMS text message
 
 ```javascript
 modem.sendMessage({
-  reciever: '+46123456789',
+  receiver: '+46123456789',
   text: 'Hello from node world!'
 }).then(status => console.log(status))
 ```
